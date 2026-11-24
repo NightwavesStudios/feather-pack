@@ -1,0 +1,33 @@
+.share-modal {
+  max-width: 460px;
+}
+
+.share-modal h2 {
+  overflow-wrap: anywhere;
+}
+
+.share-link {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.4;
+  text-overflow: ellipsis;
+}
+
+.share-link:focus {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.share-modal .modal-actions {
+  margin-top: 16px;
+}
+
+.share-modal .btn.primary {
+  margin-top: 0;
+}

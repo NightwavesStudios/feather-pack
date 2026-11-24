@@ -41,6 +41,9 @@ export function Sidebar({
           <button type="button" aria-pressed={unit === "imperial"} onClick={() => onUnitChange("imperial")}>
             oz
           </button>
+          <button type="button" aria-pressed={unit === "pounds"} onClick={() => onUnitChange("pounds")}>
+            lbs
+          </button>
         </div>
       </div>
 

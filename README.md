@@ -10,7 +10,8 @@ Feather keeps everything in your browser — no account, no server, no tracking.
 - Gear grouped into categories, with quantities and inline editing
 - Base weight, worn weight, consumables and total weight, recalculated live
 - Flexible weight entry: `450`, `1.2 kg`, `12 oz`, or `1 lb 2 oz`
-- Metric and imperial display, stored internally in grams
+- Grams, ounces, or pounds display, stored internally in grams
+- Self-contained share links that put the whole pack in the URL
 - Drag-and-drop reordering and cross-category moves on desktop
 - Touch-friendly category picker for moving gear on phones
 - Local autosave plus downloadable/uploadable JSON backups
@@ -38,6 +39,8 @@ The production bundle is written to `dist/`.
 ## Data & backups
 
 Every change is saved to `localStorage` under `feather.library.v1`. The **Download** action exports all packs as a JSON backup; **Upload** restores packs by id (falling back to name), updating existing packs instead of adding duplicates.
+
+**Share** turns the active pack into a link with all of its details in the query string. Opening the link loads the pack into the recipient's local library; nothing is sent to a server.
 
 ## Deployment
 

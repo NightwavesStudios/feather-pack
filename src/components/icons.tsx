@@ -50,6 +50,22 @@ export function CopyIcon({ size = 15 }: IconProps) {
   );
 }
 
+export function ShareIcon({ size = 15 }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <circle cx="12" cy="3.5" r="1.7" stroke="currentColor" strokeWidth="1.25" />
+      <circle cx="4" cy="8" r="1.7" stroke="currentColor" strokeWidth="1.25" />
+      <circle cx="12" cy="12.5" r="1.7" stroke="currentColor" strokeWidth="1.25" />
+      <path
+        d="m5.5 7.2 5-2.9M5.5 8.8l5 2.9"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 export function DownloadIcon({ size = 15 }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 16 16" fill="none" aria-hidden="true">
