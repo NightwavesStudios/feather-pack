@@ -1,4 +1,4 @@
-export type Unit = "metric" | "imperial";
+export type Unit = "metric" | "imperial" | "pounds";
 
 export interface GearItem {
   id: string;

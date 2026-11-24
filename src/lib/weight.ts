@@ -33,6 +33,7 @@ export function parseWeight(raw: string, defaultUnit: Unit): number | null {
   const matches = [...text.matchAll(/(\d+(?:\.\d+)?)\s*([a-z]+)?/g)];
   if (matches.length === 0) return null;
 
+  const bareFactor = defaultUnit === "metric" ? 1 : defaultUnit === "imperial" ? GRAMS_PER_OUNCE : GRAMS_PER_POUND;
   let grams = 0;
   let bare = 0;
   let sawUnit = false;
@@ -51,8 +52,8 @@ export function parseWeight(raw: string, defaultUnit: Unit): number | null {
     }
   }
 
-  if (!sawUnit) return Math.round(bare);
-  grams += bare * (defaultUnit === "metric" ? 1 : GRAMS_PER_OUNCE);
+  if (!sawUnit) return Math.round(bare * bareFactor);
+  grams += bare * bareFactor;
   return Math.round(grams);
 }
 
@@ -62,6 +63,9 @@ export function formatWeight(grams: number, unit: Unit): string {
     return value >= 1000
       ? `${(value / 1000).toFixed(2)} kg`
       : `${value} g`;
+  }
+  if (unit === "pounds") {
+    return `${(grams / GRAMS_PER_POUND).toFixed(2)} lb`;
   }
   const ounces = grams / GRAMS_PER_OUNCE;
   const roundedOunces = Math.round(ounces * 10) / 10;
@@ -74,11 +78,13 @@ export function formatWeight(grams: number, unit: Unit): string {
 export function formatWeightInput(grams: number, unit: Unit): string {
   if (!grams) return "";
   if (unit === "metric") return String(Math.round(grams));
+  if (unit === "pounds") return String(Math.round((grams / GRAMS_PER_POUND) * 100) / 100);
   return String(Math.round((grams / GRAMS_PER_OUNCE) * 10) / 10);
 }
 
 export function unitSuffix(unit: Unit): string {
-  return unit === "metric" ? "g" : "oz";
+  if (unit === "metric") return "g";
+  return unit === "imperial" ? "oz" : "lb";
 }
 
 export function packTotals(pack: Pack): Totals {

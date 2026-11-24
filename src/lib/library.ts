@@ -53,7 +53,7 @@ function normalizeCategory(raw: unknown): Category | null {
   };
 }
 
-function normalizePack(raw: unknown): Pack | null {
+export function normalizePack(raw: unknown): Pack | null {
   if (!isRecord(raw)) return null;
   const categories = Array.isArray(raw.categories)
     ? raw.categories.map(normalizeCategory).filter((category): category is Category => category !== null)
@@ -86,7 +86,8 @@ export function loadLibrary(): Library {
       typeof parsed.activePackId === "string" && packs.some((pack) => pack.id === parsed.activePackId)
         ? parsed.activePackId
         : packs[0]?.id ?? null;
-    const unit: Unit = parsed.unit === "imperial" ? "imperial" : "metric";
+    const unit: Unit =
+      parsed.unit === "imperial" || parsed.unit === "pounds" ? parsed.unit : "metric";
 
     return { version: 1, unit, activePackId, packs };
   } catch {
