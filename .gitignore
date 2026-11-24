@@ -1,0 +1,15 @@
+node_modules/
+dist/
+dist-ssr/
+.vite/
+.vercel/
+
+*.log
+*.local
+.DS_Store
+
+.env
+.env.*
+!.env.example
+
+artifacts/
