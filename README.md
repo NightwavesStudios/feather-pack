@@ -41,7 +41,7 @@ Every change is saved to `localStorage` under `feather.library.v1`. The **Downlo
 
 ## Deployment
 
-Deployed on Vercel from the `main` branch using the Vite preset:
+Ready to deploy on Vercel from the `main` branch using the Vite preset:
 
 - Build command: `npm run build`
 - Output directory: `dist`
